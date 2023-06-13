@@ -31,6 +31,7 @@ leftArrow.addEventListener("click", () => {
 	const currentSlide = slides[currentIndex];
 	imageElement.src = "assets/images/slideshow/" + currentSlide.image;
 	taglineElement.innerHTML = currentSlide.tagLine;
+	setCurrentSlide(currentIndex);
 
 });
 		//J'appelle la constancte flecheDroite pour lui assigner la fonction (étape 2)
@@ -40,6 +41,7 @@ rightArrow.addEventListener("click", () => {
 	const currentSlide = slides[currentIndex];
 	imageElement.src = "assets/images/slideshow/" + currentSlide.image;
 	taglineElement.innerHTML = currentSlide.tagLine;
+	setCurrentSlide(currentIndex);
 
 });
 
@@ -64,17 +66,23 @@ const dot = document.createElement('span');
 	dots.push(dot);
 });
 
-	// Je gére la sélection du "bullet-point" en cours et lui attribue le position 0
-let currentDotIndex = 0;
+
 
 	// Je crée la fonction qui me permet que le "bullet-point" prenne ou non le CSS
 function setCurrentSlide(index) {
+	currentIndex = index;
+	const currentSlide = slides[currentIndex];
+	imageElement.src = "assets/images/slideshow/" + currentSlide.image;
+	taglineElement.innerHTML = currentSlide.tagLine;
 	const dots = document.querySelectorAll('.dot');
-	dots[currentDotIndex].classList.remove('dot_selected');
-	dots[index].classList.add('dot_selected');
 
-	currentDotIndex = index;
+	dots.forEach((dot, i) => {
+		dot.classList.toggle('dot_selected', i===currentIndex)
+	});
 }
+
+	// Appeler setCurrentSlide() avec l'index initial
+setCurrentSlide(currentIndex);
 
 
 
