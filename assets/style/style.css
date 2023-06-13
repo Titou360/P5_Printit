@@ -54,7 +54,7 @@ table {
 	border-spacing: 0;
 }
 body {
- background-color: #fff;
+
 }
 section {
 	margin-block: 6em;
@@ -123,40 +123,15 @@ header {
 }
 /* Code CSS en prévision de l'ajout d'un carousel pour la bannière */
 /* Gestion des fleches du carrousel */
-#banner {
-	position: relative;
-	width: 1440px;
-	margin: auto;
-	display: flex;
-	align-items: center;
-
-}
-
 #banner .arrow {
 	position: absolute;
-	background-color: rgba(0, 0, 0, 0.4);
-	opacity: 0;
-	cursor: pointer;
-	transition : opacity 300ms ease;
 }
-
 #banner .arrow_left {
 	left: 10px;
 }
 #banner .arrow_right {
 	right: 10px;
 }
-
-#banner:hover .arrow {
-	opacity: 1;
-
-}
-
-
-
-
-
-
 /* Gestion des points du carrousel */
 .dots {
 	position: absolute;
@@ -170,7 +145,7 @@ header {
 	background-color: #ffffff00;
 	border: 3px solid #fff;
 	border-radius: 100%;
-	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);;
 }
 .dot_selected {
 	background-color: #fff;
