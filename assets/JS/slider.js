@@ -24,26 +24,33 @@ const imageElement = document.querySelector(".banner-img");
 const taglineElement = document.querySelector("p");
 let currentIndex = 0;
 
-	//J'appelle la constante flecheGauche pour lui assigner la fonction (étape 2)
+// J'appelle la constante flecheGauche pour lui assigner la fonction
 leftArrow.addEventListener("click", () => {
-	console.log("Flèche gauche");//Alerte bouton gauche /!\ à effacer avant mise en ligne
-	currentIndex = (currentIndex -1 + slides.length) % slides.length;
-	const currentSlide = slides[currentIndex];
-	imageElement.src = "assets/images/slideshow/" + currentSlide.image;
-	taglineElement.innerHTML = currentSlide.tagLine;
-	setCurrentSlide(currentIndex);
-
+    console.log("Flèche gauche");
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    const currentSlide = slides[currentIndex];
+    imageElement.src = "assets/images/slideshow/" + currentSlide.image;
+    taglineElement.innerHTML = currentSlide.tagLine;
+    setCurrentSlide(currentIndex);
 });
-		//J'appelle la constancte flecheDroite pour lui assigner la fonction (étape 2)
+
+// J'appelle la constante flecheDroite pour lui assigner la fonction
 rightArrow.addEventListener("click", () => {
-	console.log("Flèche droite"); // Alerte bouton droit /!\ à effacer avant mise en ligne
-	currentIndex = (currentIndex + 1) % slides.length;
-	const currentSlide = slides[currentIndex];
-	imageElement.src = "assets/images/slideshow/" + currentSlide.image;
-	taglineElement.innerHTML = currentSlide.tagLine;
-	setCurrentSlide(currentIndex);
-
+    console.log("Flèche droite");
+    currentIndex = (currentIndex + 1) % slides.length;
+    const currentSlide = slides[currentIndex];
+    imageElement.src = "assets/images/slideshow/" + currentSlide.image;
+    taglineElement.innerHTML = currentSlide.tagLine;
+    setCurrentSlide(currentIndex);
 });
+
+// Ajouter la condition pour le dernier slide
+if (currentIndex === slides.length - 1) {
+	rightArrow.addEventListener("click", () => {
+	  currentIndex = 0;
+	  setCurrentSlide(currentIndex);
+	});
+  }
 
 
 
@@ -59,9 +66,10 @@ const dots = [];
 slides.forEach((_slide, index) => {
 const dot = document.createElement('span');
 	dot.classList.add('dot');
-	dot.addEventListener('click', () => {
+	/**** Pour rendre cliquable les dots ****/
+	/*dot.addEventListener('click', () => {
 		setCurrentSlide(index);
-	});
+	});*/
 	dotsContainer.appendChild(dot);
 	dots.push(dot);
 });
