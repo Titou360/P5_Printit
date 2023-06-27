@@ -20,29 +20,44 @@ const slides = [
 /* Create the banner with JS */
 document.addEventListener('DOMContentLoaded', function() {
 	var bannerDiv = document.querySelector('#banner');
+	var currentIndex =0;
   
-	// Création de l'élément image pour la flèche gauche
 	var arrowLeftImg = document.createElement('img');
-	arrowLeftImg.classList.add('arrow', 'arrow_left');
-	arrowLeftImg.src = './assets/images/arrow_left.png';
-  
-	// Création de l'élément image pour la bannière
+		arrowLeftImg.classList.add('arrow', 'arrow_left');
+		arrowLeftImg.src = './assets/images/arrow_left.png';
+
+		arrowLeftImg.addEventListener('click', function() {
+			currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+			// Autres actions à effectuer lors du clic sur l'image arrowLeftImg...
+			updateBanner();
+		  });
+
 	var bannerImg = document.createElement('img');
-	bannerImg.className = 'banner-img';
-	bannerImg.src = './assets/images/slideshow/slide1.jpg';
+		bannerImg.className = 'banner-img';
+		bannerImg.src = './assets/images/slideshow/' + slides[currentIndex].image;
 
-  
-	// Création de l'élément image pour la flèche droite
 	var arrowRightImg = document.createElement('img');
-	arrowRightImg.classList.add('arrow', 'arrow_right');
-	arrowRightImg.src = './assets/images/arrow_right.png';
+		arrowRightImg.classList.add('arrow', 'arrow_right');
+		arrowRightImg.src = './assets/images/arrow_right.png';
 
-	// Création de l'élément image les dots
+		// Ajout de l'événement click à arrowRightImg
+		arrowRightImg.addEventListener('click', function() {
+			currentIndex = (currentIndex +1) % slides.length;
+			// Autres actions à effectuer lors du clic sur l'image arrowLeftImg...
+			updateBanner();
+			});
+
+
 	var dotsImg = document.createElement('div');
-	dotsImg.className = 'dots';
+		dotsImg.className = 'dots';
 
 	var dotSpan = document.createElement('span');
-	dotSpan.classList.add('dot');
+		dotSpan.classList.add('dot');
+
+
+	function updateBanner () {
+		bannerImg.src = './assets/images/slideshow/' + slides[currentIndex].image;
+	}
 
   
 	// Ajout des éléments à la div "banner"
@@ -53,4 +68,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	dotsImg.appendChild(dotSpan);
   });
-  
+
+// Functions for slideshow
