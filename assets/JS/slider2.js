@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
 	// Création de l'élément image pour la flèche gauche
 	var arrowLeftImg = document.createElement('img');
-	arrowLeftImg.classList.add = ('arrow', 'arrow_left');
+	arrowLeftImg.classList.add('arrow', 'arrow_left');
 	arrowLeftImg.src = './assets/images/arrow_left.png';
   
 	// Création de l'élément image pour la bannière
@@ -34,12 +34,15 @@ document.addEventListener('DOMContentLoaded', function() {
   
 	// Création de l'élément image pour la flèche droite
 	var arrowRightImg = document.createElement('img');
-	arrowRightImg.classList.add = ('arrow', 'arrow_right');
+	arrowRightImg.classList.add('arrow', 'arrow_right');
 	arrowRightImg.src = './assets/images/arrow_right.png';
 
 	// Création de l'élément image les dots
 	var dotsImg = document.createElement('div');
-	dotsImg.classList.add ='dots';
+	dotsImg.className = 'dots';
+
+	var dotSpan = document.createElement('span');
+	dotSpan.classList.add('dot');
 
   
 	// Ajout des éléments à la div "banner"
@@ -47,5 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	bannerDiv.appendChild(bannerImg);
 	bannerDiv.appendChild(arrowRightImg);
 	bannerDiv.appendChild(dotsImg)
+
+	dotsImg.appendChild(dotSpan);
   });
   
