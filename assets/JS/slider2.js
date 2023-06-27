@@ -36,13 +36,17 @@ document.addEventListener('DOMContentLoaded', function() {
 		bannerImg.className = 'banner-img';
 		bannerImg.src = './assets/images/slideshow/' + slides[currentIndex].image;
 
+	var bannerTagline = document.createElement('p');
+		bannerTagline.textcontent = slides[currentIndex].tagLine;
+		bannerTagline.innerHTML = slides[currentIndex].tagLine;
+
 	var arrowRightImg = document.createElement('img');
 		arrowRightImg.classList.add('arrow', 'arrow_right');
 		arrowRightImg.src = './assets/images/arrow_right.png';
 
 		// Ajout de l'événement click à arrowRightImg
 		arrowRightImg.addEventListener('click', function() {
-			currentIndex = (currentIndex +1) % slides.length;
+			currentIndex = (currentIndex + 1) % slides.length;
 			// Autres actions à effectuer lors du clic sur l'image arrowLeftImg...
 			updateBanner();
 			});
@@ -57,12 +61,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	function updateBanner () {
 		bannerImg.src = './assets/images/slideshow/' + slides[currentIndex].image;
+		
+		if (bannerTagline) {
+			bannerDiv.removeChild(bannerTagline);
+		}
+
+		bannerTagline = document.createElement('p');
+		bannerTagline.innerHTML = slides[currentIndex].tagLine;
+
+		bannerDiv.appendChild(bannerTagline);
+
 	}
 
   
 	// Ajout des éléments à la div "banner"
 	bannerDiv.appendChild(arrowLeftImg);
 	bannerDiv.appendChild(bannerImg);
+	bannerDiv.appendChild(bannerTagline);
 	bannerDiv.appendChild(arrowRightImg);
 	bannerDiv.appendChild(dotsImg)
 
