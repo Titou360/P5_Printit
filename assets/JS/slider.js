@@ -18,39 +18,38 @@ const slides = [ /*Constance tableau */
 ]
 
 	// Je crée les constantes pour appeler les objets
-const leftArrow = document.querySelector(".arrow_left");
-const rightArrow = document.querySelector(".arrow_right");
+
 const imageElement = document.querySelector(".banner-img");
 const taglineElement = document.querySelector("p");
 let currentIndex = 0;
 
-// J'appelle la constante flecheGauche pour lui assigner la fonction
+const leftArrow = document.querySelector(".arrow_left");
 leftArrow.addEventListener("click", () => {
     console.log("Flèche gauche");
     currentIndex = (currentIndex - 1 + slides.length) % slides.length;
     const currentSlide = slides[currentIndex];
-    imageElement.src = "assets/images/slideshow/" + currentSlide.image;
-    taglineElement.innerHTML = currentSlide.tagLine;
+    /*imageElement.src = "assets/images/slideshow/" + currentSlide.image;
+    taglineElement.innerHTML = currentSlide.tagLine;*/
     setCurrentSlide(currentIndex);
 });
 
-// J'appelle la constante flecheDroite pour lui assigner la fonction
+const rightArrow = document.querySelector(".arrow_right");
 rightArrow.addEventListener("click", () => {
     console.log("Flèche droite");
     currentIndex = (currentIndex + 1) % slides.length;
     const currentSlide = slides[currentIndex];
-    imageElement.src = "assets/images/slideshow/" + currentSlide.image;
-    taglineElement.innerHTML = currentSlide.tagLine;
+    /*imageElement.src = "assets/images/slideshow/" + currentSlide.image;
+    /*taglineElement.innerHTML = currentSlide.tagLine;*/
     setCurrentSlide(currentIndex);
 });
 
-// Ajouter la condition pour le dernier slide
+/*// Ajouter la condition pour le dernier slide
 if (currentIndex === slides.length - 1) {
 	rightArrow.addEventListener("click", () => {
 	  currentIndex = 0;
 	  setCurrentSlide(currentIndex);
 	});
-  }
+  }*/
 
 
 
@@ -77,8 +76,7 @@ const dot = document.createElement('span');
 
 
 	// Je crée la fonction qui me permet que le "bullet-point" prenne ou non le CSS
-function setCurrentSlide(index) {
-	currentIndex = index;
+function setCurrentSlide(currentIndex) {
 	const currentSlide = slides[currentIndex];
 	imageElement.src = "assets/images/slideshow/" + currentSlide.image;
 	taglineElement.innerHTML = currentSlide.tagLine;
@@ -90,7 +88,7 @@ function setCurrentSlide(index) {
 }
 
 	// Appeler setCurrentSlide() avec l'index initial
-setCurrentSlide(currentIndex);
+setCurrentSlide(0);
 
 
 
