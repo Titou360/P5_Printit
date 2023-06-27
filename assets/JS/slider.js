@@ -17,7 +17,11 @@ const slides = [ /*Constance tableau */
 	}
 ]
 
-	// Je crée les constantes pour appeler les objets
+
+
+
+
+
 
 const imageElement = document.querySelector(".banner-img");
 const taglineElement = document.querySelector("p");
@@ -25,7 +29,6 @@ let currentIndex = 0;
 
 const leftArrow = document.querySelector(".arrow_left");
 leftArrow.addEventListener("click", () => {
-    console.log("Flèche gauche");
     currentIndex = (currentIndex - 1 + slides.length) % slides.length;
     const currentSlide = slides[currentIndex];
     /*imageElement.src = "assets/images/slideshow/" + currentSlide.image;
@@ -35,7 +38,6 @@ leftArrow.addEventListener("click", () => {
 
 const rightArrow = document.querySelector(".arrow_right");
 rightArrow.addEventListener("click", () => {
-    console.log("Flèche droite");
     currentIndex = (currentIndex + 1) % slides.length;
     const currentSlide = slides[currentIndex];
     /*imageElement.src = "assets/images/slideshow/" + currentSlide.image;
@@ -43,17 +45,7 @@ rightArrow.addEventListener("click", () => {
     setCurrentSlide(currentIndex);
 });
 
-/*// Ajouter la condition pour le dernier slide
-if (currentIndex === slides.length - 1) {
-	rightArrow.addEventListener("click", () => {
-	  currentIndex = 0;
-	  setCurrentSlide(currentIndex);
-	});
-  }*/
-
-
-
-/// Etape 3 : J'ajoute les bullet points sur la partie basse du Slider (1 point par image)
+/// J'ajoute les bullet points sur la partie basse du Slider (1 point par image)
 	// Je peux vérifier le nombre de ligne de contenu dans mon tableau 
 console.log("Nombre de lignes dans le tableau :" + slides.length); // /!\ à effacer avant mise en ligne
 
