@@ -69,8 +69,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		bannerDiv.appendChild(bannerTagline);
 
 
-		dots.forEach((dot, i) => {
-			dot.classList.toggle('dot_selected', i === currentIndex);
+		dots.forEach((dot, index) => {
+			dot.classList.toggle('dot_selected', index === currentIndex);
 		  });
 
 	}
