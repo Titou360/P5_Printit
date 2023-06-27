@@ -21,6 +21,7 @@ const slides = [
 document.addEventListener('DOMContentLoaded', function() {
 	var bannerDiv = document.querySelector('#banner');
 	var currentIndex =0;
+	
   
 	var arrowLeftImg = document.createElement('img');
 		arrowLeftImg.classList.add('arrow', 'arrow_left');
@@ -28,26 +29,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		arrowLeftImg.addEventListener('click', function() {
 			currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-			// Autres actions à effectuer lors du clic sur l'image arrowLeftImg...
 			updateBanner();
 		  });
+
 
 	var bannerImg = document.createElement('img');
 		bannerImg.className = 'banner-img';
 		bannerImg.src = './assets/images/slideshow/' + slides[currentIndex].image;
 
+
 	var bannerTagline = document.createElement('p');
-		bannerTagline.textcontent = slides[currentIndex].tagLine;
 		bannerTagline.innerHTML = slides[currentIndex].tagLine;
+
 
 	var arrowRightImg = document.createElement('img');
 		arrowRightImg.classList.add('arrow', 'arrow_right');
 		arrowRightImg.src = './assets/images/arrow_right.png';
 
-		// Ajout de l'événement click à arrowRightImg
 		arrowRightImg.addEventListener('click', function() {
 			currentIndex = (currentIndex + 1) % slides.length;
-			// Autres actions à effectuer lors du clic sur l'image arrowLeftImg...
 			updateBanner();
 			});
 
@@ -55,13 +55,10 @@ document.addEventListener('DOMContentLoaded', function() {
 	var dotsImg = document.createElement('div');
 		dotsImg.className = 'dots';
 
-	var dotSpan = document.createElement('span');
-		dotSpan.classList.add('dot');
-
 
 	function updateBanner () {
 		bannerImg.src = './assets/images/slideshow/' + slides[currentIndex].image;
-		
+
 		if (bannerTagline) {
 			bannerDiv.removeChild(bannerTagline);
 		}
@@ -71,17 +68,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		bannerDiv.appendChild(bannerTagline);
 
+
+		dots.forEach((dot, i) => {
+			dot.classList.toggle('dot_selected', i === currentIndex);
+		  });
+
 	}
 
-  
-	// Ajout des éléments à la div "banner"
+	// Add the elements to the banner
 	bannerDiv.appendChild(arrowLeftImg);
 	bannerDiv.appendChild(bannerImg);
 	bannerDiv.appendChild(bannerTagline);
 	bannerDiv.appendChild(arrowRightImg);
-	bannerDiv.appendChild(dotsImg)
+	bannerDiv.appendChild(dotsImg);
 
-	dotsImg.appendChild(dotSpan);
+	
+	var dots = [];
+  		slides.forEach((_slide, index) => {
+    var dot = document.createElement('span');
+    	dot.classList.add('dot');
+    	dot.addEventListener('click', function() {
+      		currentIndex = index;
+      		updateBanner();
+    	});
+    	
+		dotsImg.appendChild(dot);
+    	dots.push(dot);
+  	});
+
+  updateBanner();
   });
 
-// Functions for slideshow
