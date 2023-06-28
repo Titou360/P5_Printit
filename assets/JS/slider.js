@@ -19,11 +19,11 @@ const slides = [
 
 // Create the banner with JS 
 document.addEventListener('DOMContentLoaded', function() {
-	var bannerDiv = document.querySelector('#banner');
-	var currentIndex =0;
+	let bannerDiv = document.querySelector('#banner');
+	let currentIndex =0;
 	
   
-	var arrowLeftImg = document.createElement('img');
+	let arrowLeftImg = document.createElement('img');
 		arrowLeftImg.classList.add('arrow', 'arrow_left');
 		arrowLeftImg.src = './assets/images/arrow_left.png';
 
@@ -33,16 +33,16 @@ document.addEventListener('DOMContentLoaded', function() {
 		  });
 
 
-	var bannerImg = document.createElement('img');
+	let bannerImg = document.createElement('img');
 		bannerImg.className = 'banner-img';
 		bannerImg.src = './assets/images/slideshow/' + slides[currentIndex].image;
 
 
-	var bannerTagline = document.createElement('p');
+	let bannerTagline = document.createElement('p');
 		bannerTagline.innerHTML = slides[currentIndex].tagLine;
 
 
-	var arrowRightImg = document.createElement('img');
+	let arrowRightImg = document.createElement('img');
 		arrowRightImg.classList.add('arrow', 'arrow_right');
 		arrowRightImg.src = './assets/images/arrow_right.png';
 
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			});
 
 
-	var dotsImg = document.createElement('div');
+	let dotsImg = document.createElement('div');
 		dotsImg.className = 'dots';
 
 
@@ -84,9 +84,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	
 	// Add the dots to the banner
-	var dots = [];
+	let dots = [];
   		slides.forEach((_slide, index) => {
-    var dot = document.createElement('span');
+    let dot = document.createElement('span');
     	dot.classList.add('dot');
     	dot.addEventListener('click', function() {
       		currentIndex = index;
